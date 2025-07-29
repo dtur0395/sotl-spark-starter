@@ -52,6 +52,14 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// UNSW Brand Colors
+				unsw: {
+					yellow: 'hsl(var(--unsw-yellow))',
+					navy: 'hsl(var(--unsw-navy))',
+					blue: 'hsl(var(--unsw-blue))',
+					'light-blue': 'hsl(var(--unsw-light-blue))',
+					gray: 'hsl(var(--unsw-gray))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',

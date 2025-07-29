@@ -1,14 +1,44 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { SoTLIntroScreen } from "@/components/SoTLIntroScreen";
+import { SoTLForm, SoTLFormData } from "@/components/SoTLForm";
+import { SoTLSummary } from "@/components/SoTLSummary";
+
+type AppState = "intro" | "form" | "summary";
 
 const Index = () => {
-  return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
-  );
+  const [currentState, setCurrentState] = useState<AppState>("intro");
+  const [formData, setFormData] = useState<SoTLFormData | null>(null);
+
+  const handleFormSubmit = (data: SoTLFormData) => {
+    setFormData(data);
+    setCurrentState("summary");
+  };
+
+  const handleRestart = () => {
+    setFormData(null);
+    setCurrentState("intro");
+  };
+
+  switch (currentState) {
+    case "intro":
+      return <SoTLIntroScreen onContinue={() => setCurrentState("form")} />;
+    case "form":
+      return (
+        <SoTLForm 
+          onSubmit={handleFormSubmit}
+          onBack={() => setCurrentState("intro")}
+        />
+      );
+    case "summary":
+      return formData ? (
+        <SoTLSummary 
+          data={formData}
+          onRestart={handleRestart}
+        />
+      ) : null;
+    default:
+      return null;
+  }
 };
 
 export default Index;
