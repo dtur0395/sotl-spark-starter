@@ -15,7 +15,7 @@ import { cn } from "@/lib/utils";
 
 export interface SoTLFormData {
   problem: string;
-  collaborator: string;
+  collaborators: string[];
   customCollaborator?: string;
   dataSources: string[];
   feltenPrinciples: string[];
@@ -79,7 +79,7 @@ const feltenPrinciples = [
 export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
   const [formData, setFormData] = useState<SoTLFormData>({
     problem: "",
-    collaborator: "",
+    collaborators: [],
     dataSources: [],
     feltenPrinciples: [],
     nextStep: "",
@@ -90,6 +90,23 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
+  };
+
+  const handleCollaboratorChange = (collaborator: string, checked: boolean) => {
+    setFormData(prev => ({
+      ...prev,
+      collaborators: checked 
+        ? [...prev.collaborators, collaborator]
+        : prev.collaborators.filter(c => c !== collaborator)
+    }));
+    
+    // Show custom input when "Other" is selected
+    if (collaborator === "Other") {
+      setShowCustomCollaborator(checked);
+      if (!checked) {
+        setFormData(prev => ({ ...prev, customCollaborator: "" }));
+      }
+    }
   };
 
   const handleDataSourceChange = (source: string, checked: boolean) => {
@@ -110,7 +127,7 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
     }));
   };
 
-  const isFormValid = formData.problem.trim() && formData.collaborator && formData.dataSources.length > 0;
+  const isFormValid = formData.problem.trim() && formData.collaborators.length > 0 && formData.dataSources.length > 0;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-unsw-light-blue to-background p-4">
@@ -154,31 +171,30 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
                 SoTL is often most effective as a collaborative endeavor.
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <Select 
-                value={formData.collaborator} 
-                onValueChange={(value) => {
-                  setFormData(prev => ({ ...prev, collaborator: value }));
-                  setShowCustomCollaborator(value === "Other");
-                }}
-                required
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select a potential collaborator" />
-                </SelectTrigger>
-                <SelectContent>
-                  {collaboratorOptions.map(option => (
-                    <SelectItem key={option} value={option}>{option}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <CardContent>
+              <div className="grid grid-cols-2 gap-4">
+                {collaboratorOptions.map(collaborator => (
+                  <div key={collaborator} className="flex items-center space-x-2">
+                    <Checkbox
+                      id={collaborator}
+                      checked={formData.collaborators.includes(collaborator)}
+                      onCheckedChange={(checked) => handleCollaboratorChange(collaborator, checked as boolean)}
+                    />
+                    <Label htmlFor={collaborator} className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                      {collaborator}
+                    </Label>
+                  </div>
+                ))}
+              </div>
               
               {showCustomCollaborator && (
-                <Input
-                  placeholder="Please specify..."
-                  value={formData.customCollaborator || ""}
-                  onChange={(e) => setFormData(prev => ({ ...prev, customCollaborator: e.target.value }))}
-                />
+                <div className="mt-4">
+                  <Input
+                    placeholder="Please specify other collaborator..."
+                    value={formData.customCollaborator || ""}
+                    onChange={(e) => setFormData(prev => ({ ...prev, customCollaborator: e.target.value }))}
+                  />
+                </div>
               )}
             </CardContent>
           </Card>

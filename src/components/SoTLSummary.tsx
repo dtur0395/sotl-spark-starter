@@ -86,10 +86,18 @@ export const SoTLSummary = ({ data, onRestart }: SoTLSummaryProps) => {
                 <Users className="h-5 w-5" />
                 Potential Collaboration
               </h3>
-              <Badge variant="secondary" className="text-base px-4 py-2">
-                {data.collaborator}
-                {data.customCollaborator && `: ${data.customCollaborator}`}
-              </Badge>
+              <div className="flex flex-wrap gap-2">
+                {data.collaborators.map((collaborator, index) => (
+                  <Badge key={index} variant="secondary" className="text-base px-4 py-2">
+                    {collaborator}
+                  </Badge>
+                ))}
+                {data.customCollaborator && (
+                  <Badge variant="secondary" className="text-base px-4 py-2">
+                    {data.customCollaborator}
+                  </Badge>
+                )}
+              </div>
             </div>
 
             <Separator />
