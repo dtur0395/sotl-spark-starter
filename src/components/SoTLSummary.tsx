@@ -109,11 +109,16 @@ export const SoTLSummary = ({ data, onRestart }: SoTLSummaryProps) => {
                 Available Data Sources
               </h3>
               <div className="flex flex-wrap gap-2">
-                {data.dataSources.map(source => (
-                  <Badge key={source} variant="outline" className="border-unsw-blue text-unsw-navy">
+                {data.dataSources.map((source, index) => (
+                  <Badge key={index} variant="outline" className="border-unsw-blue text-unsw-navy">
                     {source}
                   </Badge>
                 ))}
+                {data.customDataSource && (
+                  <Badge variant="outline" className="border-unsw-blue text-unsw-navy">
+                    {data.customDataSource}
+                  </Badge>
+                )}
               </div>
             </div>
 

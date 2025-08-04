@@ -18,6 +18,7 @@ export interface SoTLFormData {
   collaborators: string[];
   customCollaborator?: string;
   dataSources: string[];
+  customDataSource?: string;
   feltenPrinciples: string[];
   nextStep: string;
   timeline?: Date;
@@ -86,6 +87,7 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
   });
 
   const [showCustomCollaborator, setShowCustomCollaborator] = useState(false);
+  const [showCustomDataSource, setShowCustomDataSource] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -116,6 +118,14 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
         ? [...prev.dataSources, source]
         : prev.dataSources.filter(s => s !== source)
     }));
+    
+    // Show custom input when "Other" is selected
+    if (source === "Other") {
+      setShowCustomDataSource(checked);
+      if (!checked) {
+        setFormData(prev => ({ ...prev, customDataSource: "" }));
+      }
+    }
   };
 
   const handleFeltenPrincipleChange = (principle: string, checked: boolean) => {
@@ -222,6 +232,16 @@ export const SoTLForm = ({ onSubmit, onBack }: SoTLFormProps) => {
                   </div>
                 ))}
               </div>
+              
+              {showCustomDataSource && (
+                <div className="mt-4">
+                  <Input
+                    placeholder="Please specify other data source..."
+                    value={formData.customDataSource || ""}
+                    onChange={(e) => setFormData(prev => ({ ...prev, customDataSource: e.target.value }))}
+                  />
+                </div>
+              )}
             </CardContent>
           </Card>
 
