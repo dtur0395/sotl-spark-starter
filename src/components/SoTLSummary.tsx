@@ -53,7 +53,7 @@ export const SoTLSummary = ({ data, onRestart }: SoTLSummaryProps) => {
             </div>
           </div>
           <p className="text-lg text-foreground/80">
-            Here's your personalized starting point for Scholarship of Teaching and Learning
+            Here's your personalised starting point for Scholarship of Teaching and Learning
           </p>
         </div>
 
