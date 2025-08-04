@@ -77,16 +77,31 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
 
         {/* CTA */}
         <div className="text-center">
+          <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg max-w-2xl mx-auto">
+            <p className="text-sm text-amber-800">
+              <strong>Professional staff:</strong> Please consult with your manager/supervisor before beginning your SoTL journey.
+            </p>
+          </div>
           <Button 
             onClick={onContinue}
-            variant="unsw"
             size="lg"
-            className="text-lg px-12 py-6 h-auto"
+            className="text-xl px-16 py-8 h-auto bg-green-600 hover:bg-green-700 text-white font-bold tracking-wide"
           >
-            Begin Your Reflection
+            BEGIN YOUR REFLECTION
           </Button>
           <p className="text-sm text-unsw-gray mt-4">
             Takes approximately 5-10 minutes to complete
+          </p>
+          <p className="text-xs text-unsw-gray mt-2">
+            Learn more about{" "}
+            <a 
+              href="https://www.unsw.edu.au/education-student-experience/scholarship-teaching-learning" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-unsw-blue hover:underline"
+            >
+              Scholarship of Teaching and Learning at UNSW
+            </a>
           </p>
         </div>
       </div>
