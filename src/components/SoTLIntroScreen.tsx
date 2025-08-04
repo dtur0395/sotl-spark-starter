@@ -90,7 +90,7 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
           <p className="text-xs text-unsw-gray mt-2">
             Learn more about{" "}
             <a 
-              href="https://www.unsw.edu.au/education-student-experience/scholarship-teaching-learning" 
+              href="https://www.education.unsw.edu.au/teaching/developing-teaching/sotl-support" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-unsw-blue hover:underline"
