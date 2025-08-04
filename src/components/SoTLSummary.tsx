@@ -186,9 +186,9 @@ export const SoTLSummary = ({ data, onRestart }: SoTLSummaryProps) => {
           <CardContent>
             <div className="space-y-4">
               <Button variant="outline" className="w-full justify-start" asChild>
-                <a href="https://www.unsw.edu.au/" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.education.unsw.edu.au/teaching/developing-teaching/sotl-support" target="_blank" rel="noopener noreferrer">
                   <ExternalLink className="mr-2 h-4 w-4" />
-                  Visit SoTL@UNSW Resources
+                  Explore SoTL Support at UNSW
                 </a>
               </Button>
             </div>
