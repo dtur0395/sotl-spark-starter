@@ -77,11 +77,6 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
 
         {/* CTA */}
         <div className="text-center">
-          <div className="mb-4 p-4 bg-amber-50 border border-amber-200 rounded-lg max-w-2xl mx-auto">
-            <p className="text-sm text-amber-800">
-              <strong>Professional staff:</strong> Please consult with your manager/supervisor before beginning your SoTL journey.
-            </p>
-          </div>
           <Button 
             onClick={onContinue}
             size="lg"
@@ -101,6 +96,17 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
               className="text-unsw-blue hover:underline"
             >
               Scholarship of Teaching and Learning at UNSW
+            </a>
+          </p>
+          <p className="text-xs text-unsw-gray mt-2">
+            Reference: Felten, P. (2013). Principles of good practice in SoTL.{" "}
+            <a 
+              href="https://doi.org/10.20343/teachlearninqu.1.1.121" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-unsw-blue hover:underline"
+            >
+              Teaching & Learning Inquiry, 1(1), 121–125
             </a>
           </p>
         </div>
