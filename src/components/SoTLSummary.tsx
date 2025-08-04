@@ -201,10 +201,6 @@ export const SoTLSummary = ({ data, onRestart }: SoTLSummaryProps) => {
             <Download className="h-4 w-4" />
             Download Summary
           </Button>
-          <Button onClick={handleShare} variant="outline" size="lg" className="flex items-center gap-2">
-            <Share2 className="h-4 w-4" />
-            Share Results
-          </Button>
           <Button onClick={onRestart} variant="ghost" size="lg" className="flex items-center gap-2">
             <RotateCcw className="h-4 w-4" />
             Start Over
