@@ -32,7 +32,7 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
 
         {/* Feature Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <Card className="border-2 border-unsw-light-blue/50 hover:border-unsw-blue/70 transition-all duration-300 hover:shadow-lg">
+          <Card className="border-2 border-unsw-light-blue/50">
             <CardHeader className="text-center">
               <div className="mx-auto p-3 bg-unsw-light-blue rounded-lg w-fit mb-3">
                 <Target className="h-6 w-6 text-unsw-navy" />
@@ -46,7 +46,7 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-unsw-light-blue/50 hover:border-unsw-blue/70 transition-all duration-300 hover:shadow-lg">
+          <Card className="border-2 border-unsw-light-blue/50">
             <CardHeader className="text-center">
               <div className="mx-auto p-3 bg-unsw-light-blue rounded-lg w-fit mb-3">
                 <Users className="h-6 w-6 text-unsw-navy" />
@@ -60,7 +60,7 @@ export const SoTLIntroScreen = ({ onContinue }: SoTLIntroScreenProps) => {
             </CardContent>
           </Card>
 
-          <Card className="border-2 border-unsw-light-blue/50 hover:border-unsw-blue/70 transition-all duration-300 hover:shadow-lg">
+          <Card className="border-2 border-unsw-light-blue/50">
             <CardHeader className="text-center">
               <div className="mx-auto p-3 bg-unsw-light-blue rounded-lg w-fit mb-3">
                 <BookOpen className="h-6 w-6 text-unsw-navy" />
